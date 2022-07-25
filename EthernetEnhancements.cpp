@@ -18,23 +18,6 @@ EthernetEnhancements::EthernetEnhancements(char serverAddress[], int port, byte 
   _gateway = gateway;
   _subnet = subnet;
   _client = client;
-
-  /*Serial.print(F("serverAddress: "));
-  Serial.println(_serverAddress); // Good
-  Serial.print(F("port: "));
-  Serial.println(_port); // Good
-  Serial.print(F("mac: "));
-  Serial.println(*_mac); // Good, HEX?
-  Serial.print(F("IP: "));
-  Serial.println(*_ip); // Good
-  Serial.print(F("myDns: "));
-  Serial.println(*_myDns); // Good
-  Serial.print(F("gateway: "));
-  Serial.println(*_gateway); // Good
-  Serial.print(F("subnet: "));
-  Serial.println(*_subnet); // Good
-  Serial.print(F("client: "));
-  Serial.println(*_client); // Bad? */
 }
 
 // This method is used to display the request type and API URL
