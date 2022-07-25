@@ -1,0 +1,7 @@
+EthernetEnhancements    KEYWORD1
+displayReqType  KEYWORD2
+reqStatus   KEYWORD2
+reqResponse KEYWORD2
+initializeEthernet  KEYWORD2
+checkEthernetStatus KEYWORD2
+assignStaticIP  KEYWORD2
