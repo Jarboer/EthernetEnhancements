@@ -5,3 +5,4 @@ reqResponse KEYWORD2
 initializeEthernet  KEYWORD2
 checkEthernetStatus KEYWORD2
 assignStaticIP  KEYWORD2
+wait KEYWORD2

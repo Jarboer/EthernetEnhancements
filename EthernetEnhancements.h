@@ -10,25 +10,25 @@
 #include <ArduinoHttpClient.h>
 
 class EthernetEnhancements {
-    public:
-        /* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.*/
-        EthernetEnhancements(char serverAddress[], int port, byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet, HttpClient *client);
-        void displayReqType(char type[], char path[]);
-        int reqStatus(int connectionCode);
-        String reqResponse();
-        void initializeEthernet(bool bypassDHCP);
-        void checkEthernetStatus();
-        void assignStaticIP();
-        void wait(int seconds, String reason);
-    private:
-        int _port;
-        IPAddress *_ip;
-        IPAddress *_myDns;
-        IPAddress *_gateway;
-        IPAddress *_subnet;
-        HttpClient *_client;
-        byte *_mac;
-        char *_serverAddress;
+  public:
+    /* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.*/
+    EthernetEnhancements(char serverAddress[], int port, byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet, HttpClient *client);
+    void displayReqType(char type[], char path[]);
+    int reqStatus(int connectionCode);
+    String reqResponse();
+    void initializeEthernet(bool bypassDHCP);
+    void checkEthernetStatus();
+    void assignStaticIP();
+    void wait(int seconds, String reason);
+  private:
+    int _port;
+    IPAddress *_ip;
+    IPAddress *_myDns;
+    IPAddress *_gateway;
+    IPAddress *_subnet;
+    HttpClient *_client;
+    byte *_mac;
+    char *_serverAddress;
 };
 
 #endif
