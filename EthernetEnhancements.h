@@ -12,7 +12,7 @@
 class EthernetEnhancements {
   public:
     /* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.*/
-    EthernetEnhancements(char serverAddress[], int port, byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet, HttpClient *client);
+    EthernetEnhancements(bool displayClientInfo, bool displayEthernetInfo, char serverAddress[], int *port, byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet, HttpClient *client);
     void displayReqType(char type[], char path[]);
     int reqStatus(int connectionCode);
     String reqResponse();
@@ -21,7 +21,9 @@ class EthernetEnhancements {
     void assignStaticIP();
     void wait(int seconds, String reason);
   private:
-    int _port;
+    bool _displayClientInfo;
+    bool _displayEthernetInfo;
+    int *_port;
     IPAddress *_ip;
     IPAddress *_myDns;
     IPAddress *_gateway;
