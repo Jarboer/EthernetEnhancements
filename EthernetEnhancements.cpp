@@ -2,10 +2,7 @@
   EthernetEnhancements.cpp - A library that adds useful helper functions for the Ethernet and ArduinoHttpClient Libraries
   Created by Jarrett on July 22, 2022
 */
-#include "Arduino.h"
 #include "EthernetEnhancements.h"
-#include <Ethernet.h>  // Library for the WizNet5100 module, change if using a different one
-#include <ArduinoHttpClient.h>
 
 /* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.
    NOTE: You must include the & before the serverAddress and port varible when using this method when calling it in a sketch*/
@@ -116,7 +113,7 @@ void EthernetEnhancements::checkEthernetStatus() {
       /* Do nothing, there's no point in running without Ethernet hardware */
     }
   } else if (Ethernet.linkStatus() == LinkOFF) {  // Check if there is an Ethernet cable attatched
-    Serial.println(F("Ethernet cable is not connected."));
+    Serial.println(F("No Ethernet cable is connected."));
   }
 }
 
@@ -134,7 +131,7 @@ void EthernetEnhancements::assignStaticIP() {
 
 /* This method is used to wait for the given seconds and
    display why it is waiting and a count down.*/
-void EthernetEnhancements::wait(int seconds, String reason) {
+void EthernetEnhancements::wait(int seconds, const __FlashStringHelper* reason) {
   // Display how long to wait and why
   Serial.print(F("Waiting "));
   Serial.print(seconds);

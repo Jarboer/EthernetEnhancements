@@ -19,7 +19,7 @@ class EthernetEnhancements {
     void initializeEthernet(bool bypassDHCP);
     void checkEthernetStatus();
     void assignStaticIP();
-    void wait(int seconds, String reason);
+    void wait(int seconds, const __FlashStringHelper* reason);
   private:
     bool _displayClientInfo;
     bool _displayEthernetInfo;
