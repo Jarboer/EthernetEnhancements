@@ -6,7 +6,9 @@
 
 /* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.
    NOTE: You must include the & before the serverAddress and port varible when using this method when calling it in a sketch*/
-EthernetEnhancements::EthernetEnhancements(bool displayClientInfo, bool displayEthernetInfo, char serverAddress[], int *port, byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet, HttpClient *client) {
+EthernetEnhancements::EthernetEnhancements(bool displayClientInfo, bool displayEthernetInfo, char serverAddress[], int *port,
+                                           byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet,
+                                           HttpClient *client) {
   _displayClientInfo = displayClientInfo;
   _displayEthernetInfo = displayEthernetInfo;
   _serverAddress = serverAddress;
@@ -131,7 +133,7 @@ void EthernetEnhancements::assignStaticIP() {
 
 /* This method is used to wait for the given seconds and
    display why it is waiting and a count down.*/
-void EthernetEnhancements::wait(int seconds, const __FlashStringHelper* reason) {
+void EthernetEnhancements::wait(int seconds, const __FlashStringHelper *reason) {
   // Display how long to wait and why
   Serial.print(F("Waiting "));
   Serial.print(seconds);
