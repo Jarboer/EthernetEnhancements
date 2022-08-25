@@ -1,11 +1,9 @@
-/*
-  EthernetEnhancements.cpp - A library that adds useful helper functions for the Ethernet and ArduinoHttpClient Libraries
-  Created by Jarrett on July 22, 2022
-*/
+/**
+ * EthernetEnhancements.cpp - A library that adds useful helper functions for the Ethernet and ArduinoHttpClient Libraries
+ * Created by Jarrett on July 22, 2022
+ */
 #include "EthernetEnhancements.h"
 
-/* This is a constructor for EthernetEnhancements which takes a for toggleSwitchesON array.
-   NOTE: You must include the & before the serverAddress and port varible when using this method when calling it in a sketch*/
 EthernetEnhancements::EthernetEnhancements(bool displayClientInfo, bool displayEthernetInfo, char serverAddress[], int *port,
                                            byte mac[], IPAddress *ip, IPAddress *myDns, IPAddress *gateway, IPAddress *subnet,
                                            HttpClient *client) {
@@ -21,7 +19,6 @@ EthernetEnhancements::EthernetEnhancements(bool displayClientInfo, bool displayE
   _client = client;
 }
 
-// This method is used to display the request type and API URL
 void EthernetEnhancements::displayReqType(char type[], char path[]) {
   if (_displayClientInfo == true) {
     Serial.print(F("Making "));
@@ -34,9 +31,6 @@ void EthernetEnhancements::displayReqType(char type[], char path[]) {
   }
 }
 
-/*  This method is used to display the request status from the server.
-    It returns the connectionCode (a 1 digit value) if there was an error making the request.
-    Otherwise, it returns the HTTP response status codes from the server (200, 400, 500, etc.).*/
 int EthernetEnhancements::reqStatus(int connectionCode) {
   // If the connectionCode is not 0 there is an error so display it
   if (connectionCode != 0) {
@@ -58,8 +52,6 @@ int EthernetEnhancements::reqStatus(int connectionCode) {
   return statusCode;
 }
 
-/* This method is used to display the request response from the server.
-   This should return a JSON message.*/
 String EthernetEnhancements::reqResponse() {
   // Read the body of the response
   String response = _client->responseBody();
@@ -73,7 +65,6 @@ String EthernetEnhancements::reqResponse() {
   return response;
 }
 
-// This method is used to intilize the Ethernet connection
 void EthernetEnhancements::initializeEthernet(bool bypassDHCP) {
   // Bypass getting an IP address from the DHCP server
   if (bypassDHCP) {
@@ -105,8 +96,6 @@ void EthernetEnhancements::initializeEthernet(bool bypassDHCP) {
   }
 }
 
-/* This method is used to check the Ethernet status.
-   NOTE: This doesn't work on the W5100 sheild.*/
 void EthernetEnhancements::checkEthernetStatus() {
   // Check if there's Ethernet hardware present
   if (Ethernet.hardwareStatus() == EthernetNoHardware) {
@@ -119,7 +108,6 @@ void EthernetEnhancements::checkEthernetStatus() {
   }
 }
 
-// This method is used to assign a static IP address to the Arduino
 void EthernetEnhancements::assignStaticIP() {
   // Try to congifure using IP address instead of DHCP
   Ethernet.begin(*_mac, *_ip, *_myDns, *_gateway, *_subnet);
@@ -131,8 +119,6 @@ void EthernetEnhancements::assignStaticIP() {
   }
 }
 
-/* This method is used to wait for the given seconds and
-   display why it is waiting and a count down.*/
 void EthernetEnhancements::wait(int seconds, const __FlashStringHelper *reason) {
   // Display how long to wait and why
   Serial.print(F("Waiting "));
