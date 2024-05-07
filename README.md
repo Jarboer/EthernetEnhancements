@@ -15,4 +15,6 @@ A library that adds useful helper functions for the Ethernet and ArduinoHttpClie
 
 ## How to Use
 
-Idk man, ask me or something. I did use this so I should know... even though it has been almost 2 years since.
+See the examples:
+
+[getAndPushExamples](/examples/getAndPushExamples) - Shows how to setup and use a the library to preform basic get and push requests.
