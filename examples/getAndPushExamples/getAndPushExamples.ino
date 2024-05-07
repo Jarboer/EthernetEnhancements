@@ -2,19 +2,16 @@
 #include <SPI.h>
 #include <Ethernet.h>  // Library for the WizNet5100 module, change if using a different one
 #include <ArduinoJson.h>
-#include <EEPROM.h>
 #include <TimeLib.h>
 // My custom libraries
-#include <VirtualButton.h>
 #include <EthernetEnhancements.h>
 
 // ---------------------- BEGIN OF USER CONFIG ----------------------
 
 // --------------------- Server Network Details ---------------------
 
-/* Used to store the Node.js HTTP API server address and port which will
-   be connected to.
-   This should be configured to be static in the router.*/
+/* Used to store the API server address and port which will
+   be connected to. */
 const char serverAddress[] = "192.168.1.138";
 const int port = 8080;
 
@@ -22,19 +19,17 @@ const int port = 8080;
 
 /* Enter a MAC address for your controller below.
    Newer Ethernet shields have a MAC address printed on a sticker on the shield.*/
-byte mac[] = { 0xA8, 0x61, 0x0A, 0xAE, 0x94, 0xCA };  // { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 
 /* Set the static IP address, DNS, gateway and subnet to use if the DHCP
-   fails to be assigned or is bypassed.
-   NOTE: This will happen always on a bridged connection*/
+   fails to be assigned or is bypassed. */
 IPAddress ip(192, 168, 1, 200);
 IPAddress myDns(192, 168, 1, 41);
 IPAddress gateway(192, 168, 1, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 /* Used to determine if the DHCP server should be bypassed, this is faster when
-   using a bridged connection as it will fail even if not bypassed.
-   Disable if not using a bridged connection (this is likely the case when deployed).*/
+   using a bridged connection as it will fail even if not bypassed. */
 const bool bypassDHCP = true;
 
 // ------------------ Informative Serial Messages -------------------
@@ -112,7 +107,6 @@ void loop() {
   sendPostReq("/api/send-data");  
   
   //Serial.print(statusCode );  // The status code of the request
- 
 }
 
 // This method is used to send a HTTP POST request.
